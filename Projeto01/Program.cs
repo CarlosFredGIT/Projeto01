@@ -1,4 +1,5 @@
-﻿using Projeto01.Entities;
+﻿using Projeto01.Controllers;
+using Projeto01.Entities;
 using Projeto01.Repositories;
 using System;
 
@@ -11,14 +12,15 @@ namespace Projeto01
         {
             var cliente = new Cliente(); //É uma variável com a instancia da classe.
             cliente.Endereco = new Endereco();
-            var clienteRepository = new ClienteRepository();
+            var clienteController = new ClienteController();
 
-            clienteRepository.InserirDados(cliente);
-            clienteRepository.ImprimirDados(cliente);
+            clienteController.InserirDados(cliente);
+            clienteController.ImprimirDados(cliente);
             
             //Tentativas
             try
             {
+                var clienteRepository = new ClienteRepository();
                 clienteRepository.ExportarDados(cliente);
 
                 Console.WriteLine("Arquivo TXT gerado com sucesso!");
